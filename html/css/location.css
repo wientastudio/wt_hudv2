@@ -1,0 +1,259 @@
+
+
+.location-hud {
+    left: 2.25vw;
+    bottom: 11.4vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 5px;
+
+    min-width: 190px;
+
+    pointer-events: none;
+}
+
+
+
+.compass-line {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    height: 22px;
+}
+
+.compass-direction {
+    min-width: 24px;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.045em;
+
+    color: rgba(255, 255, 255, 0.96);
+
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.75),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.compass-divider {
+    width: 20px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            rgba(255, 255, 255, 0.14)
+        );
+}
+
+.compass-heading {
+    font-size: 10px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.06em;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    font-variant-numeric: tabular-nums;
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+
+
+.street-line {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    max-width: 360px;
+}
+
+.street-name {
+    overflow: hidden;
+
+    max-width: 205px;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: 0.015em;
+
+    color: rgba(255, 255, 255, 0.94);
+
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.8),
+        0 2px 8px rgba(0, 0, 0, 0.45);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.crossing-wrapper {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.street-dot {
+    width: 4px;
+    height: 4px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 7px
+        color-mix(
+            in srgb,
+            var(--accent) 45%,
+            transparent
+        );
+}
+
+.crossing-name {
+    overflow: hidden;
+
+    max-width: 145px;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.025em;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.65);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+.postal-wrapper {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 2px 0;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.postal-label {
+    font-size: 7px;
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255, 255, 255, 0.46);
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.75);
+}
+
+#postalValue {
+    font-size: 9px;
+    font-weight: 750;
+
+    color: rgba(255, 255, 255, 0.86);
+
+    font-variant-numeric: tabular-nums;
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.75);
+}
+
+
+.location-hud.no-compass .compass-line {
+    display: none;
+}
+
+.location-hud.no-street .street-line {
+    display: none;
+}
+
+.location-hud.no-crossing .crossing-wrapper {
+    display: none;
+}
+
+.location-hud.no-postal .postal-wrapper {
+    display: none;
+}
+
+.location-hud.no-heading .compass-heading {
+    display: none;
+}
+
+.location-hud.no-heading .compass-divider {
+    width: 10px;
+}
+
+
+.location-hud.in-vehicle {
+    bottom: 12.2vh;
+}
+
+
+
+body.layout-editing .location-hud {
+    padding: 6px;
+
+    background: rgba(124, 92, 255, 0.03);
+
+    outline:
+        1px dashed rgba(124, 92, 255, 0.28);
+
+    outline-offset: 4px;
+}
+
+
+
+@media (max-width: 1366px) {
+    .location-hud {
+        min-width: 175px;
+    }
+
+    .street-name {
+        max-width: 155px;
+    }
+
+    .crossing-name {
+        max-width: 105px;
+    }
+}

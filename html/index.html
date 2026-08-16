@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Wienta HUD</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/status.css" />
+    <link rel="stylesheet" href="css/vehicle.css" />
+    <link rel="stylesheet" href="css/player-info.css" />
+    <link rel="stylesheet" href="css/location.css" />
+    <link rel="stylesheet" href="css/settings.css" />
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HUD ROOT
+    ====================================================== -->
+
+    <main id="hudRoot" class="hud-root">
+
+        <!-- =================================================
+             CINEMATIC
+        ================================================== -->
+
+        <div
+            id="cinematicTop"
+            class="cinematic-bar cinematic-bar-top"
+        ></div>
+
+        <div
+            id="cinematicBottom"
+            class="cinematic-bar cinematic-bar-bottom"
+        ></div>
+
+
+        <!-- =================================================
+             PLAYER INFO
+        ================================================== -->
+
+        <section
+            id="playerInfo"
+            class="player-info hud-element"
+            data-hud-element="playerInfo"
+        >
+            <div class="player-info-header">
+
+                <div class="player-info-brand">
+                    <div class="brand-mark">
+                        <span class="brand-mark-inner"></span>
+                    </div>
+
+                    <div class="brand-copy">
+                        <span
+                            id="serverName"
+                            class="brand-name"
+                        >
+                            WIENTA ROLEPLAY
+                        </span>
+
+                        <span class="brand-subtitle">
+                            LOS SANTOS
+                        </span>
+                    </div>
+                </div>
+
+                <div class="player-id">
+                    <span class="player-id-label">
+                        ID
+                    </span>
+
+                    <span id="playerId">
+                        21
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="player-info-divider"></div>
+
+
+            <div class="player-identity">
+
+                <div class="player-name-row">
+
+                    <span
+                        id="characterName"
+                        class="player-name"
+                    >
+                        Yağız Yılmaz
+                    </span>
+
+                    <span
+                        id="dutyState"
+                        class="duty-state"
+                    >
+                        ON DUTY
+                    </span>
+
+                </div>
+
+
+                <div class="player-job-row">
+
+                    <span
+                        id="jobName"
+                        class="job-name"
+                    >
+                        Los Santos Police Department
+                    </span>
+
+                    <span class="job-separator">
+                        /
+                    </span>
+
+                    <span
+                        id="jobGrade"
+                        class="job-grade"
+                    >
+                        Police Officer III
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="player-money">
+
+                <div
+                    id="cashBlock"
+                    class="money-item"
+                >
+                    <span class="money-label">
+                        CASH
+                    </span>
+
+                    <span
+                        id="cashValue"
+                        class="money-value"
+                    >
+                        $12.540
+                    </span>
+                </div>
+
+
+                <div
+                    id="bankBlock"
+                    class="money-item"
+                >
+                    <span class="money-label">
+                        BANK
+                    </span>
+
+                    <span
+                        id="bankValue"
+                        class="money-value"
+                    >
+                        $148.200
+                    </span>
+                </div>
+
+
+                <div
+                    id="cryptoBlock"
+                    class="money-item"
+                >
+                    <span class="money-label">
+                        CRYPTO
+                    </span>
+
+                    <span
+                        id="cryptoValue"
+                        class="money-value"
+                    >
+                        0
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LOCATION / COMPASS
+        ================================================== -->
+
+        <section
+            id="locationHud"
+            class="location-hud hud-element"
+            data-hud-element="location"
+        >
+
+            <div class="compass-line">
+
+                <span
+                    id="compassDirection"
+                    class="compass-direction"
+                >
+                    NW
+                </span>
+
+                <span class="compass-divider"></span>
+
+                <span
+                    id="compassHeading"
+                    class="compass-heading"
+                >
+                    318°
+                </span>
+
+            </div>
+
+
+            <div class="street-line">
+
+                <span
+                    id="streetName"
+                    class="street-name"
+                >
+                    Alta Street
+                </span>
+
+                <span
+                    id="crossingWrapper"
+                    class="crossing-wrapper"
+                >
+                    <span class="street-dot"></span>
+
+                    <span
+                        id="crossingName"
+                        class="crossing-name"
+                    >
+                        Vinewood Boulevard
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div
+                id="postalWrapper"
+                class="postal-wrapper"
+            >
+                <span class="postal-label">
+                    POSTAL
+                </span>
+
+                <span id="postalValue">
+                    726
+                </span>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATUS HUD
+        ================================================== -->
+
+        
+
+        
+
+        <section
+            id="statusHud"
+            class="status-hud hud-element status-minimal"
+            data-hud-element="status"
+        >
+
+            <!-- HEALTH -->
+
+            <div
+                id="statusHealth"
+                class="status-item"
+                data-status="health"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 21s-7-4.35-9.33-8.18C.73 9.65 2.12 5.5 5.9 4.5c2.16-.57 4.25.26 5.52 1.84C12.7 4.76 14.79 3.93 16.95 4.5c3.78 1 5.17 5.15 3.23 8.32C17.85 16.65 12 21 12 21Z"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="healthFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="healthValue"
+                    class="status-value"
+                >
+                    100
+                </span>
+            </div>
+
+
+            <!-- ARMOR -->
+
+            <div
+                id="statusArmor"
+                class="status-item"
+                data-status="armor"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2 4.5 5v5.1c0 5.1 3.15 9.82 7.5 11.9 4.35-2.08 7.5-6.8 7.5-11.9V5L12 2Z"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="armorFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="armorValue"
+                    class="status-value"
+                >
+                    0
+                </span>
+            </div>
+
+
+            <!-- HUNGER -->
+
+            <div
+                id="statusHunger"
+                class="status-item"
+                data-status="hunger"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M7 3v8M4 3v5c0 2 1 3 3 3s3-1 3-3V3M7 11v10M16 3c-2 3-2 7-2 10h4v8M18 3v10"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="hungerFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="hungerValue"
+                    class="status-value"
+                >
+                    82
+                </span>
+            </div>
+
+
+            <!-- THIRST -->
+
+            <div
+                id="statusThirst"
+                class="status-item"
+                data-status="thirst"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2s6 6.5 6 12a6 6 0 1 1-12 0c0-5.5 6-12 6-12Z"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="thirstFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="thirstValue"
+                    class="status-value"
+                >
+                    74
+                </span>
+            </div>
+
+
+            <!-- STRESS -->
+
+            <div
+                id="statusStress"
+                class="status-item"
+                data-status="stress"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M13 2 5 14h6l-1 8 9-13h-6l0-7Z"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="stressFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="stressValue"
+                    class="status-value"
+                >
+                    12
+                </span>
+            </div>
+
+
+            <!-- STAMINA -->
+
+            <div
+                id="statusStamina"
+                class="status-item"
+                data-status="stamina"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M13 3 8 11h4l-1 10 6-11h-4l0-7Z"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="staminaFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="staminaValue"
+                    class="status-value"
+                >
+                    100
+                </span>
+            </div>
+
+
+            <!-- OXYGEN -->
+
+            <div
+                id="statusOxygen"
+                class="status-item"
+                data-status="oxygen"
+            >
+                <div class="status-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="7"
+                        />
+
+                        <circle
+                            cx="10"
+                            cy="10"
+                            r="1"
+                        />
+
+                        <circle
+                            cx="15"
+                            cy="13"
+                            r="1"
+                        />
+                    </svg>
+
+                </div>
+
+                <div class="status-track">
+                    <div
+                        id="oxygenFill"
+                        class="status-fill"
+                    ></div>
+                </div>
+
+                <span
+                    id="oxygenValue"
+                    class="status-value"
+                >
+                    100
+                </span>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             VOICE HUD
+        ================================================== -->
+
+        <section
+            id="voiceHud"
+            class="voice-hud hud-element"
+            data-hud-element="voice"
+        >
+
+            <div
+                id="voiceMic"
+                class="voice-mic"
+            >
+                <svg viewBox="0 0 24 24">
+                    <rect
+                        x="9"
+                        y="3"
+                        width="6"
+                        height="11"
+                        rx="3"
+                    />
+
+                    <path
+                        d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"
+                    />
+                </svg>
+            </div>
+
+
+            <div class="voice-copy">
+
+                <span
+                    id="voiceRange"
+                    class="voice-range"
+                >
+                    NORMAL
+                </span>
+
+                <div
+                    id="radioInfo"
+                    class="radio-info"
+                >
+                    <span class="radio-label">
+                        RADIO
+                    </span>
+
+                    <span id="radioChannel">
+                        3
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             VEHICLE HUD
+        ================================================== -->
+
+        <section
+            id="vehicleHud"
+            class="vehicle-hud hud-element vehicle-digital"
+            data-hud-element="vehicle"
+        >
+
+            <div class="vehicle-main">
+
+                <div class="vehicle-speed">
+
+                    <span
+                        id="vehicleSpeed"
+                        class="speed-value"
+                    >
+                        086
+                    </span>
+
+                    <span
+                        id="vehicleSpeedUnit"
+                        class="speed-unit"
+                    >
+                        KM/H
+                    </span>
+
+                </div>
+
+
+                <div class="vehicle-gear">
+
+                    <span class="gear-label">
+                        GEAR
+                    </span>
+
+                    <span
+                        id="vehicleGear"
+                        class="gear-value"
+                    >
+                        4
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="rpm-wrapper">
+
+                <div class="rpm-head">
+                    <span>RPM</span>
+
+                    <span id="rpmValue">
+                        68
+                    </span>
+                </div>
+
+                <div class="rpm-track">
+                    <div
+                        id="rpmFill"
+                        class="rpm-fill"
+                    ></div>
+                </div>
+
+            </div>
+
+
+            <div class="vehicle-meta">
+
+                <div class="vehicle-meta-item fuel">
+
+                    <span class="meta-label">
+                        FUEL
+                    </span>
+
+                    <div class="meta-progress">
+                        <div
+                            id="fuelFill"
+                            class="meta-progress-fill"
+                        ></div>
+                    </div>
+
+                    <span id="fuelValue">
+                        72
+                    </span>
+
+                </div>
+
+
+                <div class="vehicle-meta-item engine">
+
+                    <span class="meta-label">
+                        ENG
+                    </span>
+
+                    <div class="meta-progress">
+                        <div
+                            id="engineFill"
+                            class="meta-progress-fill"
+                        ></div>
+                    </div>
+
+                    <span id="engineValue">
+                        94
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="vehicle-icons">
+
+                <div
+                    id="seatbeltIcon"
+                    class="vehicle-icon"
+                    title="Seatbelt"
+                >
+                    <span>SB</span>
+                </div>
+
+                <div
+                    id="lightsIcon"
+                    class="vehicle-icon"
+                    title="Lights"
+                >
+                    <span>LT</span>
+                </div>
+
+                <div
+                    id="cruiseIcon"
+                    class="vehicle-icon"
+                    title="Cruise"
+                >
+                    <span>CR</span>
+                </div>
+
+                <div
+                    id="engineIcon"
+                    class="vehicle-icon"
+                    title="Engine"
+                >
+                    <span>EN</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             WEAPON HUD
+        ================================================== -->
+
+        <section
+            id="weaponHud"
+            class="weapon-hud hud-element"
+            data-hud-element="weapon"
+        >
+
+            <div class="weapon-copy">
+
+                <span
+                    id="weaponName"
+                    class="weapon-name"
+                >
+                    PISTOL
+                </span>
+
+                <div class="weapon-ammo">
+
+                    <span
+                        id="weaponLoadedAmmo"
+                        class="weapon-loaded"
+                    >
+                        12
+                    </span>
+
+                    <span class="weapon-ammo-divider">
+                        /
+                    </span>
+
+                    <span
+                        id="weaponReserveAmmo"
+                        class="weapon-reserve"
+                    >
+                        84
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="weapon-durability">
+
+                <div class="weapon-durability-track">
+                    <div
+                        id="weaponDurabilityFill"
+                        class="weapon-durability-fill"
+                    ></div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         SETTINGS OVERLAY
+    ====================================================== -->
+
+    <div
+        id="settingsOverlay"
+        class="settings-overlay hidden"
+    >
+
+        <div class="settings-shell">
+
+            <!-- HEADER -->
+
+            <header class="settings-header">
+
+                <div class="settings-brand">
+
+                    <div class="settings-brand-mark">
+                        <span></span>
+                    </div>
+
+                    <div>
+                        <h1>HUD SETTINGS</h1>
+                        <p>Wienta Interface System</p>
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="settingsClose"
+                    class="settings-close"
+                    type="button"
+                >
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </header>
+
+
+            <div class="settings-body">
+
+                <!-- SIDEBAR -->
+
+                <aside class="settings-sidebar">
+
+                    <nav class="settings-nav">
+
+                        <button
+                            class="settings-nav-item active"
+                            data-page="general"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                01
+                            </span>
+
+                            <span>
+                                General
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="status"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                02
+                            </span>
+
+                            <span>
+                                Status
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="vehicle"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                03
+                            </span>
+
+                            <span>
+                                Vehicle
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="minimap"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                04
+                            </span>
+
+                            <span>
+                                Minimap
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="information"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                05
+                            </span>
+
+                            <span>
+                                Information
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="elements"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                06
+                            </span>
+
+                            <span>
+                                Elements
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="colors"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                07
+                            </span>
+
+                            <span>
+                                Colors
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="settings-nav-item"
+                            data-page="layout"
+                            type="button"
+                        >
+                            <span class="nav-index">
+                                08
+                            </span>
+
+                            <span>
+                                Layout
+                            </span>
+                        </button>
+
+                    </nav>
+
+
+                    <div class="settings-sidebar-footer">
+
+                        <span>
+                            WIENTA HUD
+                        </span>
+
+                        <span>
+                            V1.0
+                        </span>
+
+                    </div>
+
+                </aside>
+
+
+                <!-- CONTENT -->
+
+                <section class="settings-content">
+
+                    <!-- GENERAL -->
+
+                    <div
+                        id="page-general"
+                        class="settings-page active"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                SYSTEM
+                            </span>
+
+                            <h2>
+                                General Settings
+                            </h2>
+
+                            <p>
+                                Configure the general behaviour and scale of your HUD.
+                            </p>
+                        </div>
+
+
+                        <div class="settings-group">
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        HUD Enabled
+                                    </strong>
+
+                                    <span>
+                                        Show or hide the complete interface.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingHudEnabled"
+                                        type="checkbox"
+                                        checked
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+
+                            <div class="setting-row vertical">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        HUD Scale
+                                    </strong>
+
+                                    <span>
+                                        Change the overall interface size.
+                                    </span>
+                                </div>
+
+                                <div class="range-control">
+
+                                    <input
+                                        id="settingScale"
+                                        type="range"
+                                        min="0.7"
+                                        max="1.4"
+                                        step="0.05"
+                                        value="1"
+                                    />
+
+                                    <span id="settingScaleValue">
+                                        100%
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div
+                        id="page-status"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                PLAYER
+                            </span>
+
+                            <h2>
+                                Status HUD
+                            </h2>
+
+                            <p>
+                                Select your status style and choose which indicators are visible.
+                            </p>
+                        </div>
+
+
+                        <div class="style-grid" id="statusStyleGrid"></div>
+
+
+                        <div class="settings-group">
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Status HUD
+                                    </strong>
+
+                                    <span>
+                                        Enable the player status display.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingStatusEnabled"
+                                        type="checkbox"
+                                        checked
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Always Show Status
+                                    </strong>
+
+                                    <span>
+                                        Keep all enabled status indicators visible even when full or inactive.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingAlwaysShowStatus"
+                                        type="checkbox"
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- VEHICLE -->
+
+                    <div
+                        id="page-vehicle"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                VEHICLE
+                            </span>
+
+                            <h2>
+                                Vehicle HUD
+                            </h2>
+
+                            <p>
+                                Configure speedometer appearance and vehicle information.
+                            </p>
+                        </div>
+
+
+                        <div
+                            id="vehicleStyleGrid"
+                            class="style-grid"
+                        ></div>
+
+
+                        <div class="settings-group">
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Vehicle HUD
+                                    </strong>
+
+                                    <span>
+                                        Display vehicle information while driving.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingVehicleEnabled"
+                                        type="checkbox"
+                                        checked
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MINIMAP -->
+
+                    <div
+                        id="page-minimap"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                MAP
+                            </span>
+
+                            <h2>
+                                Minimap
+                            </h2>
+
+                            <p>
+                                Control when the map appears and choose its shape.
+                            </p>
+                        </div>
+
+                        <div class="minimap-setting-block">
+                            <div class="setting-copy">
+                                <strong>
+                                    Visibility
+                                </strong>
+
+                                <span>
+                                    Choose when the minimap should be visible.
+                                </span>
+                            </div>
+
+                            <div
+                                id="minimapModeGrid"
+                                class="choice-list"
+                            ></div>
+                        </div>
+
+                        <div class="minimap-setting-block">
+                            <div class="setting-copy">
+                                <strong>
+                                    Shape
+                                </strong>
+
+                                <span>
+                                    Hover a shape to preview it before saving.
+                                </span>
+                            </div>
+
+                            <div
+                                id="minimapShapeGrid"
+                                class="choice-list"
+                            ></div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- INFORMATION -->
+
+                    <div
+                        id="page-information"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                PROFILE
+                            </span>
+
+                            <h2>
+                                Player Information
+                            </h2>
+
+                            <p>
+                                Control the upper-right character information panel.
+                            </p>
+                        </div>
+
+
+                        <div class="settings-group">
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Player Information
+                                    </strong>
+
+                                    <span>
+                                        Show job, money and character details.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingPlayerInfo"
+                                        type="checkbox"
+                                        checked
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ELEMENTS -->
+
+                    <div
+                        id="page-elements"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                INTERFACE
+                            </span>
+
+                            <h2>
+                                HUD Elements
+                            </h2>
+
+                            <p>
+                                Choose which additional HUD elements are visible.
+                            </p>
+                        </div>
+
+
+                        <div class="settings-group">
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Location HUD
+                                    </strong>
+
+                                    <span>
+                                        Show compass, street, crossing and postal information.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingLocationEnabled"
+                                        type="checkbox"
+                                        checked
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Weapon HUD
+                                    </strong>
+
+                                    <span>
+                                        Show equipped weapon and ammunition information.
+                                    </span>
+                                </div>
+
+                                <label class="toggle">
+                                    <input
+                                        id="settingWeaponEnabled"
+                                        type="checkbox"
+                                        checked
+                                    />
+
+                                    <span class="toggle-ui"></span>
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COLORS -->
+
+                    <div
+                        id="page-colors"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                APPEARANCE
+                            </span>
+
+                            <h2>
+                                Interface Color
+                            </h2>
+
+                            <p>
+                                Choose the accent color used across the interface.
+                            </p>
+                        </div>
+
+
+                        <div
+                            id="accentPresetGrid"
+                            class="accent-grid"
+                        ></div>
+
+
+                        <div class="settings-group">
+
+                            <div class="setting-row vertical">
+
+                                <div class="setting-copy">
+                                    <strong>
+                                        Custom Accent
+                                    </strong>
+
+                                    <span>
+                                        Enter your own hexadecimal color.
+                                    </span>
+                                </div>
+
+                                <div class="color-input-row">
+
+                                    <input
+                                        id="accentColorPicker"
+                                        type="color"
+                                        value="#7C5CFF"
+                                    />
+
+                                    <input
+                                        id="accentColorText"
+                                        type="text"
+                                        maxlength="7"
+                                        value="#7C5CFF"
+                                    />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LAYOUT -->
+
+                    <div
+                        id="page-layout"
+                        class="settings-page"
+                    >
+
+                        <div class="settings-page-head">
+                            <span class="page-eyebrow">
+                                POSITION
+                            </span>
+
+                            <h2>
+                                Layout Editor
+                            </h2>
+
+                            <p>
+                                Move HUD elements and build your own screen layout.
+                            </p>
+                        </div>
+
+
+                        <div class="layout-editor-preview">
+
+                            <div class="layout-preview-screen">
+
+                                <span class="layout-preview-label">
+                                    HUD PREVIEW
+                                </span>
+
+                                <div class="layout-preview-element left">
+                                    STATUS
+                                </div>
+
+                                <div class="layout-preview-element right">
+                                    PLAYER INFO
+                                </div>
+
+                                <div class="layout-preview-element bottom">
+                                    VEHICLE
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            id="openLayoutEditor"
+                            class="settings-action"
+                            type="button"
+                        >
+                            EDIT HUD POSITION
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="settings-footer">
+
+                <button
+                    id="resetSettings"
+                    class="settings-button secondary"
+                    type="button"
+                >
+                    Reset to Default
+                </button>
+
+
+                <div class="settings-footer-actions">
+
+                    <button
+                        id="cancelSettings"
+                        class="settings-button ghost"
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        id="saveSettings"
+                        class="settings-button primary"
+                        type="button"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         LAYOUT EDITOR
+    ====================================================== -->
+
+    <div
+        id="layoutEditor"
+        class="layout-editor hidden"
+    >
+
+        <div class="layout-editor-hint">
+
+            <span>
+                HUD LAYOUT
+            </span>
+
+            <p>
+                Drag elements to reposition them.
+            </p>
+
+        </div>
+
+
+        <div class="layout-editor-actions">
+
+            <button
+                id="layoutReset"
+                type="button"
+            >
+                RESET
+            </button>
+
+            <button
+                id="layoutCancel"
+                type="button"
+            >
+                CANCEL
+            </button>
+
+            <button
+                id="layoutSave"
+                type="button"
+            >
+                SAVE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+<script src="js/app.js"></script>
+
+<script src="js/player-info.js"></script>
+<script src="js/status.js"></script>
+<script src="js/vehicle.js"></script>
+<script src="js/location.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/weapon.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/layout.js"></script>
+
+</body>
+</html>

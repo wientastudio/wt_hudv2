@@ -1,0 +1,440 @@
+
+
+.player-info {
+    top: 4.2vh;
+    right: 2.2vw;
+
+    width: 320px;
+    padding: 14px 15px 13px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.10);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    overflow: hidden;
+
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+
+
+.player-info::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 13px;
+
+    width: 34px;
+    height: 2px;
+
+    background: var(--accent);
+}
+
+
+
+.player-info-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.player-info-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+}
+
+.brand-mark {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 4px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.brand-mark::before,
+.brand-mark::after {
+    content: "";
+
+    position: absolute;
+
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.brand-mark::before {
+    width: 1px;
+    height: 12px;
+}
+
+.brand-mark::after {
+    width: 12px;
+    height: 1px;
+}
+
+.brand-mark-inner {
+    position: relative;
+
+    width: 7px;
+    height: 7px;
+
+    background: var(--accent);
+
+    clip-path: polygon(
+        50% 0%,
+        100% 50%,
+        50% 100%,
+        0% 50%
+    );
+
+    z-index: 1;
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.brand-name {
+    overflow: hidden;
+
+    max-width: 205px;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    line-height: 1.05;
+
+    letter-spacing: 0.095em;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.brand-subtitle {
+    margin-top: 3px;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.18em;
+
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+.player-id {
+    display: flex;
+    align-items: baseline;
+
+    gap: 5px;
+
+    flex: 0 0 auto;
+
+    padding-left: 9px;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+
+    font-variant-numeric: tabular-nums;
+}
+
+.player-id-label {
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255, 255, 255, 0.38);
+}
+
+#playerId {
+    font-size: 13px;
+    font-weight: 750;
+
+    color: rgba(255, 255, 255, 0.86);
+}
+
+
+
+.player-info-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 10px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.025)
+        );
+}
+
+
+
+.player-identity {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.player-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.player-name {
+    overflow: hidden;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.015em;
+
+    color: rgba(255, 255, 255, 0.96);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.duty-state {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    padding-left: 11px;
+
+    font-size: 8px;
+    font-weight: 750;
+
+    letter-spacing: 0.11em;
+
+    color: var(--success);
+}
+.duty-state::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+    transform: translateY(-50%);
+
+    box-shadow:
+        0 0 7px currentColor;
+}
+
+.duty-state.off-duty {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.duty-state.off-duty::before {
+    box-shadow: none;
+}
+
+
+
+.player-job-row {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    overflow: hidden;
+
+    min-width: 0;
+}
+
+.job-name,
+.job-grade {
+    overflow: hidden;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    line-height: 1.1;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.job-name {
+    max-width: 185px;
+}
+
+.job-grade {
+    max-width: 100px;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.job-separator {
+    flex: 0 0 auto;
+
+    font-size: 8px;
+
+    color: rgba(255, 255, 255, 0.17);
+}
+
+
+
+.player-money {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    margin-top: 11px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.money-item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+
+    padding: 9px 8px 1px 0;
+}
+
+.money-item:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+    top: 9px;
+    right: 8px;
+
+    width: 1px;
+    height: 24px;
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.money-label {
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255, 255, 255, 0.36);
+}
+
+.money-value {
+    overflow: hidden;
+
+    max-width: 100%;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.86);
+
+    font-variant-numeric: tabular-nums;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+.player-info.money-two-columns .player-money {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.player-info.money-one-column .player-money {
+    grid-template-columns: 1fr;
+}
+
+.player-info.no-money .player-money {
+    display: none;
+}
+
+
+
+body.layout-editing .player-info {
+    background: rgba(255, 255, 255, 0.50);
+}
+
+
+@media (max-width: 1366px) {
+    .player-info {
+        width: 300px;
+    }
+
+    .brand-name {
+        max-width: 185px;
+    }
+
+    .job-name {
+        max-width: 165px;
+    }
+}
+
+
+
+.player-info {
+    /* Kutunun kendi arka planı KALSIN */
+    background: rgba(9, 10, 13, 0.78) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-radius: 6px !important;
+
+    /* Arkadaki büyük siyah dikdörtgeni oluşturan efektleri kapat */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    box-shadow: none !important;
+    filter: none !important;
+
+    overflow: hidden !important;
+}
